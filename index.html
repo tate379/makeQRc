@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="./style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <title>QRcode</title>
+</head>
+<body>
+<p>
+  <input type="url" id="inp" placeholder="URLを入力してください。" >                  
+  <button id="btn"  >QRコード</button>
+</p>
+<div id="QR" ></div>
+              
+  <script>
+    window.addEventListener('load',function() {  
+    let inputText = document.getElementById('inp');
+    let gBtn = document.getElementById('btn');
+    gBtn.onclick = function(){
+        document.getElementById('QR').textContent = '';
+        let qrcode = new QRCode('QR', {
+          text:  inputText.value,
+          width: 128,
+          height: 128,
+          correctLevel : QRCode.CorrectLevel.H
+        });  
+      }      
+    });
+  </script>
+</body>
+</html>
